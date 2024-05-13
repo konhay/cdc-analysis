@@ -48,7 +48,7 @@ def get_frame(sql):
     get credit card due data from mysql
     '''
     try:
-        con = MySQLdb.connect('localhost', 'root', 'root', 'psbc', charset='utf8')
+        con = MySQLdb.connect('hostname', 'username', 'password', 'schema', charset='utf8')
         cur = con.cursor()
         cur.execute(sql)
         data = cur.fetchall()
@@ -200,11 +200,11 @@ def make_dataset_pro(frame):
     return xTrain, yTrain, xTest, yTest
 
 
-# 加载数据集
+# Load dataset 
 frame = get_frame(SQL1)
 xTrain, yTrain, xTest, yTest = make_dataset(frame)
 
-# 数据概览
+# Data overview
 pos, neg = 0,0
 for i in yTrain:
     if i == 1:
