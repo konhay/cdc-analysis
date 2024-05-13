@@ -20,7 +20,7 @@ def read_table(cur, sql_order):
         frame = pd.DataFrame()
     return frame
 
-con = MySQLdb.connect('localhost', 'root', 'root', 'psbc', charset='utf8')
+con = MySQLdb.connect('hostname', 'username', 'password', 'schema', charset='utf8')
 cur = con.cursor()
 
 sql = 'select custr_nbr, use_rate, val, el from a00_ccb_tb6_bk;'
@@ -42,7 +42,7 @@ X_train = np.array(frame[['use_rate','val','el']].values)
 X_scale = scale(X_train)
 #min_max_scaler = MinMaxScaler()
 #X_scale = min_max_scaler.fit_transform(X_train)
-#X_scale = X_train    ###不标准化
+#X_scale = X_train #不标准化
 
 
 def print_mean(frame, n, col_list):
